@@ -1,7 +1,7 @@
 console.log('----------------- OBJECTS -----------------');
 
 function getFullName(person) {
-  // TODO: write your code here
+  return person.firstName + ' ' + person.lastName;
 }
 
 console.log(getFullName({ firstName: 'Ada', lastName: 'Lovelace' })); // "Ada Lovelace"
@@ -11,7 +11,7 @@ console.log(getFullName({ firstName: 'Grace', lastName: 'Hopper' })); // "Grace 
 console.log('\n');
 
 function isAdult(person) {
-  // TODO: write your code here
+  return person.age >= 18;
 }
 
 console.log(isAdult({ name: 'Alice', age: 20 })); // true
@@ -22,7 +22,7 @@ console.log(isAdult({ name: 'Sam', age: 18 })); // true
 console.log('\n');
 
 function introduce(person) {
-  // TODO: write your code here
+  return `Hi, I'm ${person.name} — ${person.role} at ${person.company}.`;
 }
 
 console.log(introduce({ name: 'Ada', role: 'engineer', company: 'ACME' }));
@@ -35,7 +35,7 @@ console.log(introduce({ name: 'Grace', role: 'architect', company: 'IBM' }));
 console.log('\n');
 
 function countProperties(obj) {
-  // TODO: write your code here
+  return Object.keys(obj).length;
 }
 
 console.log(countProperties({ a: 1, b: 2, c: 3 })); // 3
@@ -47,7 +47,11 @@ console.log('\n');
 
 // Returns a new object containing only the specified keys
 function pick(obj, keys) {
-  // TODO: write your code here
+  const result = {};
+  for (let i = 0; i < keys.length; i++) {
+    result[keys[i]] = obj[keys[i]];
+  }
+  return result;
 }
 
 console.log(pick({ name: 'Ada', age: 30, role: 'dev' }, ['name', 'role']));
@@ -62,7 +66,7 @@ console.log('\n');
 // Returns the city from a nested address object
 // Hint: use dot notation twice — person.address.city
 function getCity(person) {
-  // TODO: write your code here
+  return person.address.city;
 }
 
 console.log(getCity({ name: 'Ada', address: { city: 'New York', zip: '10001' } }));
@@ -79,7 +83,7 @@ console.log('\n');
 // Hint: you need to spread TWO levels to avoid mutation:
 //   { ...person, address: { ...person.address, city: newCity } }
 function updateCity(person, newCity) {
-  // TODO: write your code here
+  return { ...person, address: { ...person.address, city: newCity } };
 }
 
 const resident = { name: 'Ada', address: { city: 'New York', zip: '10001' } };
@@ -95,7 +99,7 @@ console.log('\n');
 // Given TWO person objects, return true if they live in the same city.
 // Each person has: { name: '...', address: { city: '...' } }
 function sameCity(personA, personB) {
-  // TODO: write your code here
+  return personA.address.city === personB.address.city;
 }
 
 console.log(sameCity(

@@ -38,10 +38,10 @@ console.log('end');
 */
 
 // Write your predicted output here as a comment before running:
-// Line 1: ?
-// Line 2: ?
-// Line 3: ?
-// Line 4: ?
+// Line 1: 'start'
+// Line 2: 'end
+// Line 3: 'timeout B — 0ms'
+// Line 4: 'timeout A — 1000ms'
 
 //----------------------------------------------------
 console.log('\n--- Problem 2: delayedGreeting ---');
@@ -55,7 +55,9 @@ console.log('\n--- Problem 2: delayedGreeting ---');
 //   - The callback should receive the greeting string, not log it directly.
 //     Who decides what to DO with the greeting? The caller, not this function.
 function delayedGreeting(name, ms, callback) {
-  // TODO: write your code here
+  setTimeout(() => {
+    callback(`Hello, ${name}! Nice to meet you.`)
+  }, ms);
 }
 
 // When implemented, this should log the greeting after ~1 second:
@@ -79,7 +81,17 @@ console.log('\n--- Problem 3: asyncCountdown ---');
 // Hint: you need a variable to track the current number,
 //       and another variable to hold the interval id so you can clear it.
 function asyncCountdown(n) {
-  // TODO: write your code here
+  const id = setInterval(() => {
+    if (n === 0) {
+      clearInterval(id)
+      console.log('Done!')
+      return 
+    }
+
+    console.log(n)
+    n -= 1
+
+  }, 1000);
 }
 
 // Expected output (one per second):
@@ -109,7 +121,13 @@ console.log('\n--- Problem 4: fetchUser (simulated async) ---');
 // Hint: typeof userId === 'number' && userId > 0
 
 function fetchUser(userId, onSuccess, onError) {
-  // TODO: write your code here
+  setTimeout(() => {
+    if (userId > 0) {
+      onSuccess({ id: userId, name: userId, enrolled: true })
+    } else {
+      onError('Invalid user ID')
+    }
+  }, 1000);
 }
 
 // Test case 1 — valid user (should call onSuccess after 1s)
@@ -148,7 +166,12 @@ console.log('\n--- Problem 5 (Challenge): sequentialDelays ---');
 //       (You do NOT need setInterval for this one.)
 
 function sequentialDelays(messages, delayMs) {
-  // TODO: write your code here
+  for (let i = 0; i < messages.length; i++) {
+    const msg = messages[i];
+    setTimeout(() => {
+      console.log(msg)
+    }, delayMs)
+  }
 }
 
 sequentialDelays(['ready', 'set', 'go!'], 800);
