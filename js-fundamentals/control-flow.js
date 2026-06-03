@@ -7,7 +7,11 @@ console.log('----------------- CONTROL FLOW -----------------');
 // D: 60 – 69
 // F: below 60
 function grade(score) {
-  // TODO: write your code here
+  if (score >= 90) return 'A';
+  if (score >= 80) return 'B';
+  if (score >= 70) return 'C';
+  if (score >= 60) return 'D';
+  return 'F';
 }
 
 console.log(grade(95)); // "A"
@@ -20,7 +24,17 @@ console.log(grade(50)); // "F"
 console.log('\n');
 
 function fizzBuzz(n) {
-  // TODO: write your code here
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log('FizzBuzz');
+    } else if (i % 3 === 0) {
+      console.log('Fizz');
+    } else if (i % 5 === 0) {
+      console.log('Buzz');
+    } else {
+      console.log(i);
+    }
+  }
 }
 
 fizzBuzz(16);
@@ -45,7 +59,11 @@ fizzBuzz(16);
 console.log('\n');
 
 function sumTo(n) {
-  // TODO: write your code here
+  let total = 0;
+  for (let i = 1; i <= n; i++) {
+    total += i;
+  }
+  return total;
 }
 
 console.log(sumTo(5)); // 15   (1+2+3+4+5)
@@ -56,7 +74,9 @@ console.log(sumTo(1)); // 1
 console.log('\n');
 
 function countdown(n) {
-  // TODO: write your code here
+  for (let i = n; i >= 1; i--) {
+    console.log(i);
+  }
 }
 
 countdown(5);
@@ -83,7 +103,9 @@ console.log('\n');
 //
 // Hint: use % (modulo) to check divisibility. Example: 12 % 4 === 0 → true
 function isLeapYear(year) {
-  // TODO: write your code here
+  if (year % 400 === 0) return true;
+  if (year % 100 === 0) return false;
+  return year % 4 === 0;
 }
 
 console.log(isLeapYear(2000)); // true

@@ -10,7 +10,9 @@ const students = [
 
 // Use .map()
 function getNames(students) {
-  // TODO: write your code here
+  return students.map(function(s) {
+    return s.name
+  });
 }
 
 console.log(getNames(students));
@@ -21,7 +23,9 @@ console.log('\n');
 
 // Use .filter()
 function getPassingStudents(students) {
-  // TODO: write your code here
+  return students.filter(function(s) {
+    return s.score >= 70
+  });
 }
 
 console.log(getPassingStudents(students).map((s) => s.name));
@@ -32,7 +36,7 @@ console.log('\n');
 
 // Use .find()
 function findById(students, id) {
-  // TODO: write your code here
+  return students.find(s => s.id === id);
 }
 
 console.log(findById(students, 3)?.name); // 'Lin'
@@ -43,7 +47,7 @@ console.log('\n');
 
 // Use .reduce()
 function getTotalScore(students) {
-  // TODO: write your code here
+  return students.reduce((total, s) => total + s.score, 0);
 }
 
 console.log(getTotalScore(students)); // 409
@@ -53,12 +57,12 @@ console.log('\n');
 
 // Use .some() — true if any student scored above 90
 function hasHighScorer(students) {
-  // TODO: write your code here
+  return students.some(s => s.score > 90);
 }
 
 // Use .every() — true if all students are passing (score >= 70)
 function allPassing(students) {
-  // TODO: write your code here
+  return students.every(s => s.score >= 70);
 }
 
 console.log(hasHighScorer(students)); // true

@@ -20,7 +20,11 @@ console.log('\n--- Problem 1: applyTwice ---');
 //
 // No loops needed — just two function calls.
 function applyTwice(fn, value) {
-  // TODO: write your code here
+  const firstResult = fn(value) 
+  const secondResult = fn(firstResult)
+  return secondResult 
+  // simplified version: 
+  // return fn(fn(value))
 }
 
 const addTen = (n) => n + 10;
@@ -39,8 +43,13 @@ console.log('\n--- Problem 2: makeMultiplier ---');
 // Hint: your function body should have a single `return` that returns another function.
 // The inner function can "see" factor from the outer scope — that's called a closure.
 function makeMultiplier(factor) {
-  // TODO: write your code here
-  // return function(n) { ... }
+
+
+
+
+  return function(num) {
+    return num * factor
+  }
 }
 
 const triple = makeMultiplier(3);
@@ -60,7 +69,9 @@ console.log('\n--- Problem 3: makeGreeting ---');
 // Hint: how does this relate to makeMultiplier?
 //       Both take one thing and return a function that uses that thing later.
 function makeGreeting(greeting) {
-  // TODO: write your code here
+  return function(name) {
+    return `hello, ${name}!`
+  }
 }
 
 const sayHello = makeGreeting('Hello');
@@ -78,8 +89,19 @@ console.log('\n--- Problem 4: runAll ---');
 //
 // Hint: loop through the array. What do you call on each element?
 function runAll(fns) {
-  // TODO: write your code here
+  for (let i = 0; i < fns.length; i++) {
+    const fn = fns[i]
+    fn()
+  }
 }
+
+const list = ['a', 'b', 'c']
+for (let i = 0; i < list.length; i++) {
+  const letter = list[i]
+  console.log(letter)
+}
+
+
 
 runAll([
   () => console.log('first'),
@@ -101,12 +123,22 @@ console.log('\n--- Problem 5: mapWith ---');
 // Hint: start with an empty result array.
 //       For each item in arr, push fn(item) into result.
 function mapWith(arr, fn) {
-  // TODO: write your code here
+  const result = []
+
+  for (let i = 0; i < arr.length; i++) {
+    const item = arr[i]
+
+    const modifedValue = fn(item)
+    result.push(modifedValue)
+  }
+
+  return result
 }
 
-console.log(mapWith([1, 2, 3], (n) => n * n));        // [1, 4, 9]
-console.log(mapWith(['a', 'b', 'c'], (s) => s.toUpperCase())); // ['A', 'B', 'C']
-console.log(mapWith([], (n) => n + 1));               // []
+const mul = (n) => n * n
+console.log(mapWith([1, 2, 3], mul))        // [1, 4, 9]
+// console.log(mapWith(['a', 'b', 'c'], (s) => s.toUpperCase())); // ['A', 'B', 'C']
+// console.log(mapWith([], (n) => n + 1));               // []
 
 //----------------------------------------------------
 console.log('\n--- Problem 6: filterWith ---');
@@ -118,7 +150,19 @@ console.log('\n--- Problem 6: filterWith ---');
 // Hint: same structure as mapWith, but instead of always pushing,
 //       only push when the callback returns something truthy.
 function filterWith(arr, fn) {
-  // TODO: write your code here
+  const result = []
+
+  for (let i = 0; i < arr.length; i++) {
+    const item = arr[i]
+
+    const isTruthyResult = fn(item)
+
+    if (isTruthyResult) {
+      result.push(item)
+    }
+  }
+
+  return result
 }
 
 console.log(filterWith([1, 2, 3, 4, 5], (n) => n % 2 === 0));  // [2, 4]
@@ -141,7 +185,21 @@ console.log('\n--- Problem 7: createCounter ---');
 //       Return an object whose methods use that variable.
 //       This is a closure — the methods "close over" count.
 function createCounter() {
-  // TODO: write your code here
+  // this is how you create closure
+
+  let count = 0
+  
+  return {
+    increment() {
+      count += 1
+    },
+    decrement() {
+      count -= 1
+    },
+    getCount() {
+      return count
+    },
+  }
 }
 
 const counter = createCounter();

@@ -5,8 +5,8 @@ let x = 5;
 let y = x;
 y = 99;
 
-console.log(x); // ?
-console.log(y); // ?
+console.log(x); // 5  — primitives are copied by value; y got its own copy, so changing y doesn't affect x
+console.log(y); // 99
 
 //----------------------------------------------------
 console.log('\n');
@@ -16,16 +16,16 @@ const obj1 = { score: 10 };
 const obj2 = obj1;
 obj2.score = 99;
 
-console.log(obj1.score); // ?
-console.log(obj2.score); // ?
-console.log(obj1 === obj2); // ?
+console.log(obj1.score); // 99  — obj2 = obj1 copies the reference, not the object; both variables point to the same object
+console.log(obj2.score); // 99
+console.log(obj1 === obj2); // true  — same reference in memory, not just equal values
 
 //----------------------------------------------------
 console.log('\n');
 
 // Returns a copy of obj — the original must not change
 function safeCopy(obj) {
-  // TODO: write your code here
+  return { ...obj };
 }
 
 const original = { name: 'Ada', score: 92 };
@@ -49,7 +49,7 @@ console.log('\n');
 //   { ...student, tags: [...student.tags, tag] }
 //   Spreading the array creates a new array — so the original is untouched.
 function addTag(student, tag) {
-  // TODO: write your code here
+  return { ...student, tags: [...student.tags, tag] };
 }
 
 const student = { name: 'Lin', tags: ['css'] };
@@ -72,7 +72,7 @@ console.log('\n');
 //   { ...student, score: newScore }
 //   Properties listed after the spread win — so score gets the new value.
 function updateScore(student, newScore) {
-  // TODO: write your code here
+  return { ...student, score: newScore };
 }
 
 const ada = { name: 'Ada', score: 92 };

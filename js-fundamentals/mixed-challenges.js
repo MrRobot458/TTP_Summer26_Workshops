@@ -16,7 +16,11 @@ console.log('\n');
 // Hint: loop through the array, check each student's score, and push passing
 //       students into a new result array.
 function getPassingStudents(students) {
-  // TODO: write your code here
+  const result = [];
+  for (let i = 0; i < students.length; i++) {
+    if (students[i].score >= 70) result.push(students[i]);
+  }
+  return result;
 }
 
 const classRoster = [
@@ -44,7 +48,11 @@ console.log('\n');
 // Hint: loop through the array. Access each item's value with item[key] —
 //       bracket notation lets you use a variable as the key.
 function pluck(arr, key) {
-  // TODO: write your code here
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    result.push(arr[i][key]);
+  }
+  return result;
 }
 
 const people = [
@@ -69,7 +77,7 @@ console.log('\n');
 // Hint: you need to spread TWO levels to avoid mutating the nested object:
 //   { ...student, grades: { ...student.grades, math: newGrade } }
 function updateMathGrade(student, newGrade) {
-  // TODO: write your code here
+  return { ...student, grades: { ...student.grades, math: newGrade } };
 }
 
 const studentA = { name: 'Ada', grades: { math: 85, english: 90 } };
@@ -95,7 +103,16 @@ console.log('\n');
 // Hint: loop through arrA. For each item, loop through arrB to find the item
 //       with the matching id. Then combine both with spread: { ...itemA, ...matchB }
 function mergeById(arrA, arrB) {
-  // TODO: write your code here
+  const result = [];
+  for (let i = 0; i < arrA.length; i++) {
+    for (let j = 0; j < arrB.length; j++) {
+      if (arrA[i].id === arrB[j].id) {
+        result.push({ ...arrA[i], ...arrB[j] });
+        break;
+      }
+    }
+  }
+  return result;
 }
 
 const names = [
@@ -132,7 +149,13 @@ console.log('\n');
 //       If not, initialize it to an empty array [].
 //       Then push the item into that array.
 function groupBy(arr, key) {
-  // TODO: write your code here
+  const result = {};
+  for (let i = 0; i < arr.length; i++) {
+    const groupKey = arr[i][key];
+    if (!result[groupKey]) result[groupKey] = [];
+    result[groupKey].push(arr[i]);
+  }
+  return result;
 }
 
 const animals = [
@@ -165,7 +188,11 @@ console.log('\n');
 // Hint: declare 'let total = 0' inside makeAccumulator, then return an object
 //       with add and getTotal functions that both reference that same total.
 function makeAccumulator() {
-  // TODO: write your code here
+  let total = 0;
+  return {
+    add(n) { total += n; },
+    getTotal() { return total; }
+  };
 }
 
 const acc = makeAccumulator();
@@ -190,7 +217,13 @@ console.log('\n');
 // Hint: solve it in two steps — flatten first, then filter. Or combine both
 //       into one loop if you're feeling confident.
 function flattenAndFilter(arrays, threshold) {
-  // TODO: write your code here
+  const result = [];
+  for (let i = 0; i < arrays.length; i++) {
+    for (let j = 0; j < arrays[i].length; j++) {
+      if (arrays[i][j] > threshold) result.push(arrays[i][j]);
+    }
+  }
+  return result;
 }
 
 console.log(flattenAndFilter([[1, 15], [8, 20], [3, 11]], 10)); // [15, 20, 11]
