@@ -1,11 +1,13 @@
 console.log('----------------- SCOPE -----------------');
 
+console.log('PROBLEM 1:\n');
+
 // Returns a function that increments and returns a count each time it's called
 function makeCounter() {
-  let count = 1
+  let count = 1;
   return function() {
-    console.log(count)
-    count++
+    console.log(count);
+    count++;
   }
 }
 
@@ -17,13 +19,17 @@ console.log(counter()); // 3
 const counter2 = makeCounter();
 console.log(counter2()); // 1  ← independent from counter
 
+// CORRECT
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 2:\n');
 
 // Returns a function that adds x to whatever number is passed in
 function makeAdder(x) {
   return function(n) {
-    return n + x  // x is captured from the outer scope — this is a closure
+    return n + x; // x is captured from the outer scope — this is a closure
   }
 }
 
@@ -33,13 +39,22 @@ const add10 = makeAdder(10);
 console.log(add5(3)); // 8
 console.log(add10(3)); // 13
 console.log(add5(7)); // 12
+console.log(add5()); // NaN
+console.log(add10(undefined)); // NaN
+console.log(add5(NaN)); // NaN
+console.log(add5(null)); // 5 - null is falsy so it is treated as 0
+
+// CORRECT
+
+console.log('\n\n');
 
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 3:\n');
 
 // Predict the output — does var or let behave differently in a loop?
 for (var i = 0; i < 3; i++) {
   setTimeout(() => console.log('var:', i), 0);
+  //console.log(i);
 }
 // var: 3
 // var: 3
@@ -49,6 +64,7 @@ for (var i = 0; i < 3; i++) {
 
 for (let j = 0; j < 3; j++) {
   setTimeout(() => console.log('let:', j), 0);
+  //console.log(j);
 }
 // let: 0
 // let: 1
@@ -56,8 +72,12 @@ for (let j = 0; j < 3; j++) {
 // WHY: let is block-scoped — each loop iteration gets its OWN copy of j.
 //      Each callback closes over a different j, so they each remember their own value.
 
+// 
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 4:\n');
 
 // --- Hoisting Part 1: var vs. function declaration ---
 // Predict what each line logs. Write your prediction as a comment, then run to check.
@@ -80,8 +100,12 @@ function sayHello() {
 //           // their line is the "temporal dead zone" (TDZ)
 const greet = () => console.log('hello from greet');
 
+
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 5:\n');
 
 // --- Hoisting Part 2: var declared mid-block ---
 // Predict all three logs before running.
@@ -91,8 +115,12 @@ console.log(score); // undefined  ← var is hoisted: JS knows `score` exists, b
 var score = 42;
 console.log(score); // 42
 
+
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 6:\n');
 
 // --- Hoisting Part 3: function declaration vs. function expression ---
 // One of these calls succeeds, one throws a ReferenceError or TypeError.
@@ -112,8 +140,12 @@ var runB = function () {
   console.log('runB called');
 };
 
+
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 7:\n');
 
 // --- Hoisting Part 4: variable shadowing inside a function ---
 // The inner var color is hoisted to the TOP of printColor().
