@@ -1,5 +1,7 @@
 console.log('----------------- REFERENCE VS VALUE -----------------');
 
+console.log('PROBLEM 1:\n');
+
 // Predict what logs, then explain why in a comment
 let x = 5;
 let y = x;
@@ -8,8 +10,12 @@ y = 99;
 console.log(x); // 5  — primitives are copied by value; y got its own copy, so changing y doesn't affect x
 console.log(y); // 99
 
+// CORRECT
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 2:\n');
 
 // Predict what logs, then explain why in a comment
 const obj1 = { score: 10 };
@@ -20,8 +26,12 @@ console.log(obj1.score); // 99  — obj2 = obj1 copies the reference, not the ob
 console.log(obj2.score); // 99
 console.log(obj1 === obj2); // true  — same reference in memory, not just equal values
 
+// CORRECT
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 3:\n');
 
 // Returns a copy of obj — the original must not change
 function safeCopy(obj) {
@@ -36,8 +46,12 @@ console.log(original.score); // 92
 console.log(copy.score); // 100
 console.log(original === copy); // false
 
+// CORRECT
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 4:\n');
 
 // Returns a NEW student object with the new tag appended to the tags array.
 // The original student — including its tags array — must be completely unchanged.
@@ -59,8 +73,12 @@ console.log('New object tags :', updated.tags); // ['css', 'mentor']  ← tag ad
 console.log('Original tags   :', student.tags); // ['css']            ← must be unchanged!
 console.log('Same object?    :', updated === student); // false
 
+// CORRECT
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 5:\n');
 
 // Returns a NEW student object with the score updated to newScore.
 // The original student must remain unchanged.
@@ -81,3 +99,7 @@ const promoted = updateScore(ada, 97);
 console.log('New score  :', promoted.score); // 97  ← updated
 console.log('Original   :', ada.score);      // 92  ← must be unchanged!
 console.log('Same object?', promoted === ada); // false
+
+// CORRECT
+
+console.log('\n\n');

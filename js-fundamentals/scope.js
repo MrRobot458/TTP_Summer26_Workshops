@@ -54,7 +54,6 @@ console.log('PROBLEM 3:\n');
 // Predict the output — does var or let behave differently in a loop?
 for (var i = 0; i < 3; i++) {
   setTimeout(() => console.log('var:', i), 0);
-  //console.log(i);
 }
 // var: 3
 // var: 3
@@ -64,7 +63,6 @@ for (var i = 0; i < 3; i++) {
 
 for (let j = 0; j < 3; j++) {
   setTimeout(() => console.log('let:', j), 0);
-  //console.log(j);
 }
 // let: 0
 // let: 1
@@ -72,7 +70,7 @@ for (let j = 0; j < 3; j++) {
 // WHY: let is block-scoped — each loop iteration gets its OWN copy of j.
 //      Each callback closes over a different j, so they each remember their own value.
 
-// 
+// CORRECT
 
 console.log('\n\n');
 
@@ -100,7 +98,7 @@ function sayHello() {
 //           // their line is the "temporal dead zone" (TDZ)
 const greet = () => console.log('hello from greet');
 
-
+// CORRECT
 
 console.log('\n\n');
 
@@ -112,10 +110,21 @@ console.log('PROBLEM 5:\n');
 // Remember: the declaration is hoisted, but the assignment is not.
 
 console.log(score); // undefined  ← var is hoisted: JS knows `score` exists, but hasn't assigned 42 yet
+console.log(score2); // undefined
+console.log(score3); // undefined
+console.log(score4); // undefined
+
 var score = 42;
+var score2 = undefined;
+var score3 = NaN;
+var score4 = null;
+
 console.log(score); // 42
+console.log(score2); // undefined
+console.log(score3); // NaN
+console.log(score4); // null
 
-
+// CORRECT
 
 console.log('\n\n');
 
@@ -140,7 +149,7 @@ var runB = function () {
   console.log('runB called');
 };
 
-
+// CORRECT
 
 console.log('\n\n');
 
@@ -163,3 +172,7 @@ function printColor() {
 printColor();
 console.log(color); // "blue"  ← the outer variable was never touched; var inside a function
                     //            is scoped to that function only
+
+// CORRECT
+
+console.log('\n\n');

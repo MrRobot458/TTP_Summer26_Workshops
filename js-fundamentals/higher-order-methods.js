@@ -1,5 +1,7 @@
 console.log('----------------- HIGHER ORDER METHODS -----------------');
 
+console.log('PROBLEM 1:\n');
+
 const students = [
   { id: 1, name: 'Ada', score: 92, track: 'frontend' },
   { id: 2, name: 'Grace', score: 84, track: 'backend' },
@@ -11,39 +13,53 @@ const students = [
 // Use .map()
 function getNames(students) {
   return students.map(function(s) {
-    return s.name
+    return s.name;
   });
 }
 
 console.log(getNames(students));
 // ['Ada', 'Grace', 'Lin', 'Katherine', 'Evelyn']
 
+// CORRECT
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 2:\n');
 
 // Use .filter()
 function getPassingStudents(students) {
   return students.filter(function(s) {
-    return s.score >= 70
+    return s.score >= 70;
   });
 }
 
 console.log(getPassingStudents(students).map((s) => s.name));
 // ['Ada', 'Grace', 'Lin', 'Katherine']
 
+// CORRECT
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 3:\n');
 
 // Use .find()
 function findById(students, id) {
-  return students.find(s => s.id === id);
+  return students.find(function(s) {
+    return s.id === id;
+  });
 }
 
 console.log(findById(students, 3)?.name); // 'Lin'
 console.log(findById(students, 99)); // undefined
 
+// CORRECT
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 4:\n');
 
 // Use .reduce()
 function getTotalScore(students) {
@@ -52,8 +68,12 @@ function getTotalScore(students) {
 
 console.log(getTotalScore(students)); // 409
 
+
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 5:\n');
 
 // Use .some() — true if any student scored above 90
 function hasHighScorer(students) {
@@ -68,3 +88,4 @@ function allPassing(students) {
 console.log(hasHighScorer(students)); // true
 console.log(allPassing(students)); // false
 console.log(allPassing(students.slice(0, 4))); // true
+
