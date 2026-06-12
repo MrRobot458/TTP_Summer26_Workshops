@@ -63,12 +63,14 @@ console.log('PROBLEM 4:\n');
 
 // Use .reduce()
 function getTotalScore(students) {
-  return students.reduce((total, s) => total + s.score, 0);
+  return students.reduce(function(total, s) {
+    return total + s.score;
+  }, 0);
 }
 
 console.log(getTotalScore(students)); // 409
 
-
+// CORRECT
 
 console.log('\n\n');
 
@@ -77,15 +79,20 @@ console.log('PROBLEM 5:\n');
 
 // Use .some() — true if any student scored above 90
 function hasHighScorer(students) {
-  return students.some(s => s.score > 90);
+  return students.some(function(s) {
+    return s.score > 90;
+  });
 }
 
 // Use .every() — true if all students are passing (score >= 70)
 function allPassing(students) {
-  return students.every(s => s.score >= 70);
+  return students.every(function(s) {
+    return s.score >= 70;
+  });
 }
 
 console.log(hasHighScorer(students)); // true
 console.log(allPassing(students)); // false
 console.log(allPassing(students.slice(0, 4))); // true
 
+// CORRECT

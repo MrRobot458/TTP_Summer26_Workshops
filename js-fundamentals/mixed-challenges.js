@@ -5,7 +5,7 @@ console.log('----------------- MIXED CHALLENGES -----------------');
 // The console.log calls at the bottom of each problem are your test cases.
 
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 1:\n');
 
 // Challenge 1: Filter an array of objects
 //
@@ -34,8 +34,12 @@ const classRoster = [
 console.log(getPassingStudents(classRoster));
 // [ { name: 'Ada', score: 92 }, { name: 'Carl', score: 71 }, { name: 'Eve', score: 80 } ]
 
+// CORRECT
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 2:\n');
 
 // Challenge 2: Pluck a field from each object
 //
@@ -64,8 +68,12 @@ const people = [
 console.log(pluck(people, 'name')); // ['Ada', 'Grace', 'Alan']
 console.log(pluck(people, 'age'));  // [30, 45, 25]
 
+// CORRECT
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 3:\n');
 
 // Challenge 3: Nested update without mutation
 //
@@ -88,8 +96,12 @@ console.log('Original math     :', studentA.grades.math);  // 85  ← unchanged
 console.log('English unchanged :', updatedA.grades.english); // 90
 console.log('Same object?      :', updatedA === studentA); // false
 
+// CORRECT
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 4:\n');
 
 // Challenge 4: Merge two arrays of objects by id
 //
@@ -133,8 +145,12 @@ console.log(mergeById(names, scores));
 //   { id: 3, name: 'Carl', score: 88 }
 // ]
 
+// CORRECT
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 5:\n');
 
 // Challenge 5: Group items by a property
 //
@@ -149,13 +165,7 @@ console.log('\n');
 //       If not, initialize it to an empty array [].
 //       Then push the item into that array.
 function groupBy(arr, key) {
-  const result = {};
-  for (let i = 0; i < arr.length; i++) {
-    const groupKey = arr[i][key];
-    if (!result[groupKey]) result[groupKey] = [];
-    result[groupKey].push(arr[i]);
-  }
-  return result;
+  // Write solution here
 }
 
 const animals = [
@@ -173,8 +183,12 @@ console.log(groupBy(animals, 'type'));
 //   fish:   [ { name: 'salmon', type: 'fish' } ]
 // }
 
+//
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 6:\n');
 
 // Challenge 6: Closure — build a stateful accumulator
 //
@@ -188,11 +202,7 @@ console.log('\n');
 // Hint: declare 'let total = 0' inside makeAccumulator, then return an object
 //       with add and getTotal functions that both reference that same total.
 function makeAccumulator() {
-  let total = 0;
-  return {
-    add(n) { total += n; },
-    getTotal() { return total; }
-  };
+  // Write solution here
 }
 
 const acc = makeAccumulator();
@@ -205,8 +215,12 @@ const acc2 = makeAccumulator();
 acc2.add(3);
 console.log(acc2.getTotal()); // 3  ← independent from acc
 
+//
+
+console.log('\n\n');
+
 //----------------------------------------------------
-console.log('\n');
+console.log('PROBLEM 7:\n');
 
 // Challenge 7: Flatten then filter
 //
@@ -217,15 +231,11 @@ console.log('\n');
 // Hint: solve it in two steps — flatten first, then filter. Or combine both
 //       into one loop if you're feeling confident.
 function flattenAndFilter(arrays, threshold) {
-  const result = [];
-  for (let i = 0; i < arrays.length; i++) {
-    for (let j = 0; j < arrays[i].length; j++) {
-      if (arrays[i][j] > threshold) result.push(arrays[i][j]);
-    }
-  }
-  return result;
+  // Write solution here
 }
 
 console.log(flattenAndFilter([[1, 15], [8, 20], [3, 11]], 10)); // [15, 20, 11]
 console.log(flattenAndFilter([[5, 5], [5]], 10));               // []
 console.log(flattenAndFilter([[1, 2, 3], [4, 5]], 2));          // [3, 4, 5]
+
+//
